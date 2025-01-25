@@ -8,12 +8,12 @@
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     {% if settings.favicon != blank %}
-      <link
-        fetchpriority="low"
-        rel="icon"
-        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
-        sizes="32x32">
+      <link fetchpriority="low" rel="icon" href="{{ settings.favicon | image_url: width: 32, height: 32 }}" sizes="32x32">
     {% endif %}
 
     <title>{{ page_title }}</title>
@@ -23,16 +23,6 @@
     {% endif %}
 
     {% render 'meta-tags' %}
-
-    {% comment %} We check if its a system font, or a web-safe font {% endcomment %}
-    {% unless settings.type_heading.system? and settings.type_body.system? %}
-      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
-    {% endunless %}
-
-    {% liquid
-      render 'colors'
-      render 'typography'
-    %}
 
     {{ content_for_header }}
 
