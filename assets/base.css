@@ -77,28 +77,6 @@ html.no-js .no-js-hidden {
   padding: 0;
 }
 
-/* Grid */
-
-.grid {
-  --grid-columns: 1;
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
-}
-
-@media screen and (min-width: 750px) {
-  .grid {
-    --grid-columns: 2;
-    gap: 2rem;
-  }
-}
-
-@media screen and (min-width: 990px) {
-  .grid {
-    --grid-columns: 4;
-  }
-}
-
 /* Hide marker */
 details > summary {
   list-style: none;

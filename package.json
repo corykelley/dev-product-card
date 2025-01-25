@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "adastra dev --environment dev -s yourstore.myshopify.com --theme-editor-sync",
+    "dev": "adastra dev -s cory-kelleys-dev-sandbox.myshopify.com",
     "build": "adastra build",
     "preview": "adastra preview",
     "check": "adastra check",

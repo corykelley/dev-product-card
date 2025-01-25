@@ -1,3 +1,7 @@
-import ProductForm from '../product-form'
+import './theme.css';
 
-window.customElements.define('product-form', ProductForm)
+import productCard from '../scripts/product-card';
+
+document.addEventListener('DOMContentLoaded', () => {
+  productCard.init();
+});

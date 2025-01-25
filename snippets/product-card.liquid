@@ -1,46 +1,54 @@
-{% comment %}
-  Renders a product card.  Can be used in a grid or on its own.
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign handle = product.handle
+  assign featured_image = current_variant.featured_image | default: product.featured_image
+  assign title = product.title
+  assign vendor = product.vendor
+  assign url = product.url
+  assign sale = false
 
-  Usage:
-  <ul class="container grid" class="list-unstyled" role="list">
-    {%- for product in collection.products -%}
-      <li>
-        {% render 'product-card', card_product: product %}
-      </li>
-    {%- endfor -%}
-  </ul>
+  if product.compare_at_price > product.price
+    assign sale = true
+  endif
+%}
 
-  Accepts:
-  - card_product: {Product object}
-{% endcomment %}
-
-<div class="card">
-  <div
-    class="media"
-    style="--width: {{ card_product.featured_image.width }}; --height: {{ card_product.featured_image.height }};"
-  >
-    {% unless card_product.featured_image.src == blank %}
-      {{
-        card_product.featured_image.src
-        | image_url: width: 1440
-        | image_tag:
-          widths: '360, 450, 540, 630, 720, 900, 1050, 1200, 1320, 1440',
-          sizes: '(min-width: 1200px) 269px, (min-width: 990px) calc(25vw - 30px - 96px), (min-width: 750px) calc(50vw - 30px - 32px), calc(100vw - 30px)',
-          alt: card_product.featured_image.alt,
-          loading: 'lazy'
-        | escape
-      }}
-    {% endunless %}
+<article
+  class="p-4 product-card__container"
+  data-product-id="{{ product.id }}"
+  data-variant-id="{{ current_variant.id }}"
+  data-product-handle="{{ handle }}"
+  role="region"
+  aria-labelledby="product-title-{{ product.id }}">
+  <div class="product-card__inner">
+    <a href="{{ url }}" aria-label="View details for {{ title }}">
+      <figure class="relative w-full h-full aspect-square max-w-[315px] max-h-[340px] p-4 mb-4 border border-gray-200 rounded-lg
+product-card-image__container">
+        <img src="{{ featured_image | image_url }}" alt="{{ current_variant.title }}" class="object-contain object-center w-full h-full product-card-image" width="275" height="300" />
+        {% if sale %}
+          <figcaption class="absolute px-2 border text-error border-error sale-badge top-3 left-3 rounded-2xl">On Sale!</figcaption>
+        {% endif %}
+      </figure>
+    </a>
+    <div class="product-card-content__container">
+      <header class="mb-4 variants__container">
+        {% render 'variant-swatches', product: product %}
+      </header>
+      <div class="flex flex-col gap-2 product-card-content--info">
+        <p class="text-sm">{{ vendor }}</p>
+        <a href="{{ url }}" id="product-title-{{ product.id }}">
+          <h5 class="text-base font-medium duration-75 text-teal hover:opacity-70">{{ title }}</h5>
+        </a>
+        {% if sale %}
+          <div class="flex flex-row gap-1 product-price__container">
+            <p class="text-sm text-black line-through">{{ product.compare_at_price | money }}</p>
+            <p class="text-sm text-error">{{ product.price | money }}</p>
+          </div>
+        {% else %}
+          <div class="product-price__container">
+            <p class="text-sm">{{ product.price | money }}</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
   </div>
-
-  <h2 class="h4">
-    <a href="{{ card_product.url }}">{{ card_product.title }}</a>
-  </h2>
-
-  <p>
-    <span class="visually-hidden">{{ 'accessibility.by' | t }}</span>
-    <small>{{ card_product.vendor | escape }}</small>
-  </p>
-
-  {%- render 'price', product: card_product -%}
-</div>
+</article>

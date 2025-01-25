@@ -27,3 +27,5 @@ assets/adastra.manifest.json
 
 # Shopify
 shopify.theme.toml
+
+.shopify

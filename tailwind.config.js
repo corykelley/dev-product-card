@@ -8,32 +8,25 @@ module.exports = {
         md: '48em',
         lg: '64em',
         xl: '80em',
-        'sm-max': { max: '48em' },
-        'sm-only': { min: '32em', max: '48em' },
-        'md-only': { min: '48em', max: '64em' },
-        'lg-only': { min: '64em', max: '80em' },
-        'xl-only': { min: '80em', max: '96em' }
       },
       fontFamily: {
-        heading: 'var(--font-heading-family)',
-        body: 'var(--font-body-family)'
+        body: 'Roboto, sans-serif',
       },
       fontSize: {
-        sm: ['var(--font-size-sm)', '1.428'],
-        base: ['var(--font-size-base)', '1.5'],
-        lg: ['var(--font-size-lg)', '1.555'],
-        xl: ['var(--font-size-xl)', '1.4']
+        xxs: ['10px', '12px'],
+        xs: ['12px', '14px'],
+        sm: ['14px', '16px'],
+        base: ['16px', '18px'],
+        lg: ['18px', '20px'],
       },
       colors: {
-        accent: 'hsla(var(--color-accent) / <alpha-value>)',
-        surface: 'hsla(var(--color-surface) / <alpha-value>)',
-        primary: 'hsla(var(--color-primary) / <alpha-value>)',
-        contrast: 'hsla(var(--color-contrast) / <alpha-value>)',
-        secondary: 'hsla(var(--color-secondary) / <alpha-value>)'
+        black: '#111',
+        error: '#FF0000',
+        teal: '#0A4874',
       },
       transitionTimingFunction: {
-        wiggle: 'cubic-bezier(0.22, 1, 0.36, 1)'
-      }
-    }
-  }
-}
+        wiggle: 'cubic-bezier(0.22, 1, 0.36, 1)',
+      },
+    },
+  },
+};

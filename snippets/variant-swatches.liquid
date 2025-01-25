@@ -1,0 +1,11 @@
+<div class="flex flex-row gap-2 variant-swatches">
+  {%- for option in product.options_with_values -%}
+    {% if option.name == 'Color' %}
+      {% for color in option.values %}
+        <div class="cursor-pointer rounded-full p-[1px] {% if forloop.first %}border border-gray-800{% endif %}" data-product-swatch>
+          <div class="w-5 h-5 rounded-full" style="background-color: {{ color | downcase }}" data-swatch-value="{{ color | downcase }}"></div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {%- endfor -%}
+</div>
