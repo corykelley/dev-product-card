@@ -65,7 +65,7 @@ html.no-js .no-js-hidden {
 .container {
   --container-padding: 15px;
   margin: 0 auto;
-  max-width: 1300px;
+  max-width: 1500px;
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
 }
