@@ -1,0 +1,30 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - production*
+      - staging*
+      - uat*
+      - testing*
+
+jobs:
+  build:
+    if: github.actor != 'shopify[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: rm -rf assets/theme*
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 18.x
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          default_author: 'user_info'
+          message: 'Compiling code...'
+      - run: git push
