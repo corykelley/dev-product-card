@@ -5,9 +5,9 @@
 {% endcomment %}
 {% assign path = adastra | replace: '~/', '../' | replace: '@/', '../' %}
 {% if path == "/src/entrypoints/theme.css" or path == "theme.css" %}
-  {{ 'theme-a3c4187a.css' | asset_url | split: '?' | first | stylesheet_tag: preload: preload }}
+  {{ 'theme-e285e14a.css' | asset_url | split: '?' | first | stylesheet_tag: preload: preload }}
 {% elsif path == "/src/entrypoints/theme.js" or path == "theme.js" %}
-  <link rel="modulepreload" href="{{ 'theme-7d7c7403.js' | asset_url | split: '?' | first }}" as="script" crossorigin="anonymous">
-  <script src="{{ 'theme-7d7c7403.js' | asset_url | split: '?' | first }}" type="module" crossorigin="anonymous"></script>
-  {{ 'theme-a3c4187a.css' | asset_url | split: '?' | first | stylesheet_tag: preload: preload }}
+  <link rel="modulepreload" href="{{ 'theme-0cd6b213.js' | asset_url | split: '?' | first }}" as="script" crossorigin="anonymous">
+  <script src="{{ 'theme-0cd6b213.js' | asset_url | split: '?' | first }}" type="module" crossorigin="anonymous"></script>
+  {{ 'theme-e285e14a.css' | asset_url | split: '?' | first | stylesheet_tag: preload: preload }}
 {% endif %}
