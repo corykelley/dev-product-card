@@ -25,7 +25,7 @@
       <figure class="product-card-image__container relative w-full h-full aspect-square max-w-[315px] max-h-[340px] p-4 mb-4 border border-gray-200
 rounded-lg group">
         <img src="{{ featured_image | image_url }}" alt="{{ current_variant.title }}" class="object-contain object-center w-full h-full product-card-image group-hover:hidden" width="275" height="300" />
-        <img src="{{ secondary_image | image_url }}" alt="{{ current_variant.title }} Alternative" class="object-contain object-center w-full h-full product-card-image--secondary group-hover:!opacity-100 opacity-0" width="275" height="300" />
+        <img src="{{ secondary_image | image_url }}" alt="{{ current_variant.title }} Alternative" class="object-contain object-center w-full h-full product-card-image--secondary group-hover:!opacity-100 opacity-0 pointer-events-none" width="275" height="300" />
         {% if sale %}
           <figcaption class="absolute px-2 border text-error border-error sale-badge top-3 left-3 rounded-2xl">On Sale!</figcaption>
         {% endif %}
